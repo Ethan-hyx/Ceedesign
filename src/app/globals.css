@@ -1,46 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #F8F6F2;
-  --bg-card: #F2EFE9;
-  --text-primary: #1C1C1A;
-  --text-secondary: #6B6560;
-  --text-muted: #A09A94;
-  --border: #E2DDD7;
-  --accent: #3D3A35;
+  --bg: #F4F1EC;
+  --text-primary: #2A2826;
+  --text-secondary: #7A7570;
+  --text-muted: #B0A99F;
+  --border: #E0D9D1;
 }
 
-@theme inline {
-  --color-bg: var(--bg);
-  --color-bg-card: var(--bg-card);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  body {
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(ellipse 70% 55% at 85% 0%, rgba(255, 195, 140, 0.30) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 100% 20%, rgba(255, 160, 90, 0.14) 0%, transparent 55%);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  ::selection {
+    background: var(--text-primary);
+    color: var(--bg);
+  }
 
-body {
-  background: var(--bg);
-  color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-::selection {
-  background: var(--text-primary);
-  color: var(--bg);
-}
-
-img {
-  display: block;
-  max-width: 100%;
+  img {
+    display: block;
+    max-width: 100%;
+  }
 }

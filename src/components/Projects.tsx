@@ -1,116 +1,89 @@
 const projects = [
   {
-    id: "01",
+    id: 1,
     title: "Project Title One",
-    year: "2024",
-    category: "Product Design",
-    description: "A brief description of the project and the problem it solves. What was your role and what impact did it have?",
-    tags: ["UX Research", "UI Design", "Prototyping"],
+    year: "2025",
+    description: "Brief one-line description of the project.",
     cover: null,
   },
   {
-    id: "02",
+    id: 2,
     title: "Project Title Two",
     year: "2024",
-    category: "Brand & Identity",
-    description: "A brief description of the project and the problem it solves. What was your role and what impact did it have?",
-    tags: ["Branding", "Visual Design"],
+    description: "Brief one-line description of the project.",
     cover: null,
   },
   {
-    id: "03",
+    id: 3,
     title: "Project Title Three",
+    year: "2024",
+    description: "Brief one-line description of the project.",
+    cover: null,
+  },
+  {
+    id: 4,
+    title: "Project Title Four",
     year: "2023",
-    category: "Design System",
-    description: "A brief description of the project and the problem it solves. What was your role and what impact did it have?",
-    tags: ["Design Systems", "Components", "Documentation"],
+    description: "Brief one-line description of the project.",
     cover: null,
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="work" className="px-6 md:px-10 max-w-5xl mx-auto w-full py-24">
-      {/* Section header */}
-      <div className="flex items-baseline justify-between mb-14">
-        <h2
-          className="text-xs uppercase tracking-widest"
-          style={{ color: "var(--text-muted)", letterSpacing: "0.15em" }}
-        >
-          Selected Work
-        </h2>
-        <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-          {projects.length} projects
-        </span>
-      </div>
+    <section id="work" className="px-6 md:px-10 pb-24 max-w-2xl">
+      <p
+        className="text-xs mb-6 tracking-wide"
+        style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+      >
+        Projects
+      </p>
 
-      {/* Project list */}
-      <div className="space-y-4">
+      <div className="space-y-1">
         {projects.map((project) => (
           <article
             key={project.id}
-            className="group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.005]"
-            style={{ border: "1px solid var(--border)", backgroundColor: "var(--bg-card)" }}
+            className="group flex items-center gap-4 py-3 cursor-pointer transition-opacity hover:opacity-60"
+            style={{ borderTop: "1px solid var(--border)" }}
           >
-            {/* Cover image placeholder */}
+            {/* Thumbnail */}
             <div
-              className="w-full aspect-[16/7] flex items-center justify-center"
-              style={{ backgroundColor: "var(--border)" }}
+              className="w-[52px] h-[52px] rounded-lg shrink-0 overflow-hidden"
+              style={{ backgroundColor: "#DDD8CF" }}
             >
-              {project.cover ? (
+              {project.cover && (
                 <img src={project.cover} alt={project.title} className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-                  Cover image
-                </span>
               )}
             </div>
 
-            {/* Project info */}
-            <div className="p-7 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    {project.id}
-                  </span>
-                  <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    {project.category}
-                  </span>
-                </div>
-                <h3
-                  className="text-xl mb-2 transition-opacity group-hover:opacity-70"
-                  style={{ fontFamily: "var(--font-serif)", color: "var(--text-primary)" }}
-                >
-                  {project.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
-                <span className="text-sm" style={{ color: "var(--text-muted)" }}>
-                  {project.year}
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 rounded-full"
-                      style={{
-                        backgroundColor: "var(--bg)",
-                        color: "var(--text-secondary)",
-                        border: "1px solid var(--border)",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            {/* Info */}
+            <div className="flex-1 min-w-0">
+              <p
+                className="text-sm underline underline-offset-2 decoration-[var(--border)] group-hover:decoration-current truncate"
+                style={{ color: "var(--text-primary)", fontFamily: "var(--font-sans)" }}
+              >
+                {project.title}
+              </p>
+              <p
+                className="text-xs mt-0.5 truncate"
+                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}
+              >
+                {project.description}
+              </p>
             </div>
+
+            {/* Year */}
+            <span
+              className="text-xs shrink-0"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+            >
+              {project.year}
+            </span>
           </article>
         ))}
+
+        {/* Bottom border */}
+        <div style={{ borderTop: "1px solid var(--border)" }} />
       </div>
     </section>
   );

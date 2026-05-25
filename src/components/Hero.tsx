@@ -1,57 +1,57 @@
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-end pb-20 px-6 md:px-10 max-w-5xl mx-auto w-full pt-32">
-      {/* Status badge */}
-      <div className="mb-12">
-        <span
-          className="inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full"
-          style={{ backgroundColor: "var(--bg-card)", color: "var(--text-secondary)", border: "1px solid var(--border)" }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-          Available for work
-        </span>
-      </div>
-
-      {/* Main heading */}
-      <h1
-        className="text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-8 max-w-3xl"
+    <section className="px-6 md:px-10 pt-16 pb-20 max-w-2xl">
+      {/* Avatar — squircle shape */}
+      <div
+        className="mb-6 w-[72px] h-[72px] overflow-hidden"
         style={{
-          fontFamily: "var(--font-serif)",
-          color: "var(--text-primary)",
-          fontWeight: 400,
+          borderRadius: "22px",
+          backgroundColor: "var(--border)",
+          flexShrink: 0,
         }}
       >
-        Designer crafting{" "}
-        <span style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
-          calm
-        </span>{" "}
-        & intentional experiences
-      </h1>
-
-      {/* Description + scroll cue row */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-        <p
-          className="max-w-md text-base leading-relaxed"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Hi, I'm Cee — a product designer with a passion for interfaces
-          that feel effortless. I care deeply about typography, whitespace,
-          and the details that make people feel at home.
-        </p>
-
-        <div className="flex items-center gap-6 shrink-0">
-          <a
-            href="#work"
-            className="text-sm underline underline-offset-4 transition-opacity hover:opacity-60"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            View work ↓
-          </a>
-        </div>
+        {/* Replace src with your photo */}
+        <div className="w-full h-full" style={{ backgroundColor: "#D5CDBF" }} />
       </div>
 
-      {/* Divider */}
-      <div className="mt-20 h-px" style={{ backgroundColor: "var(--border)" }} />
+      {/* Name + location */}
+      <h1
+        className="text-base mb-0.5"
+        style={{ color: "var(--text-primary)", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+      >
+        Your Name
+      </h1>
+      <p className="text-sm mb-6" style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}>
+        City, Country
+      </p>
+
+      {/* Bio — monospace */}
+      <p
+        className="text-sm leading-[1.8] mb-8 max-w-lg"
+        style={{ color: "var(--text-primary)", fontFamily: "var(--font-mono)" }}
+      >
+        I design and build digital products with a focus on calm interfaces,
+        thoughtful motion, and visual restraint. Brief intro about your background.
+      </p>
+
+      {/* Simple text links */}
+      <div className="flex items-center gap-5">
+        <a
+          href="#contact"
+          className="text-sm transition-opacity hover:opacity-50"
+          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
+        >
+          Contact
+        </a>
+        <span style={{ color: "var(--border)" }}>·</span>
+        <a
+          href="/resume.pdf"
+          className="text-sm transition-opacity hover:opacity-50"
+          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
+        >
+          Resume
+        </a>
+      </div>
     </section>
   );
 }
