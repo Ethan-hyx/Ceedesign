@@ -1,3 +1,5 @@
+import AnimateIn from "./AnimateIn";
+
 const experience = [
   {
     role: "Senior Product Designer",
@@ -22,47 +24,54 @@ const experience = [
 export default function About() {
   return (
     <section id="about" className="px-6 md:px-10 pb-24 max-w-2xl">
-      <p
-        className="text-xs mb-6 tracking-wide"
-        style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
-      >
-        Experience
-      </p>
+      <AnimateIn>
+        <p
+          className="text-xs mb-6 tracking-wide"
+          style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+        >
+          Experience
+        </p>
+      </AnimateIn>
 
       <div className="space-y-1">
         {experience.map((item, i) => (
-          <div
-            key={i}
-            className="py-4"
-            style={{ borderTop: "1px solid var(--border)" }}
-          >
-            <div className="flex items-baseline justify-between gap-4 mb-1">
+          <AnimateIn key={i} delay={i * 70}>
+            <div
+              className="py-4"
+              style={{ borderTop: "1px solid var(--border)" }}
+            >
+              <div className="flex items-baseline justify-between gap-4 mb-1">
+                <p
+                  className="text-sm"
+                  style={{
+                    color: "var(--text-primary)",
+                    fontFamily: "var(--font-sans)",
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.role}
+                </p>
+                <span
+                  className="text-xs shrink-0"
+                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+                >
+                  {item.period}
+                </span>
+              </div>
               <p
-                className="text-sm"
-                style={{ color: "var(--text-primary)", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+                className="text-xs mb-1"
+                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
               >
-                {item.role}
+                {item.company}
               </p>
-              <span
-                className="text-xs shrink-0"
-                style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}
               >
-                {item.period}
-              </span>
+                {item.description}
+              </p>
             </div>
-            <p
-              className="text-xs mb-1"
-              style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
-            >
-              {item.company}
-            </p>
-            <p
-              className="text-xs leading-relaxed"
-              style={{ color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}
-            >
-              {item.description}
-            </p>
-          </div>
+          </AnimateIn>
         ))}
         <div style={{ borderTop: "1px solid var(--border)" }} />
       </div>
