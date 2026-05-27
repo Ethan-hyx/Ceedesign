@@ -1,68 +1,65 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <nav
-      className="sticky top-0 z-50 w-full px-6 md:px-10 py-4 flex items-center justify-between"
+      className="sticky top-0 z-50 w-full"
       style={{
+        backgroundColor: "rgba(255, 255, 255, 0.88)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
         borderBottom: "1px solid var(--border)",
-        backgroundColor: scrolled ? "rgba(244, 241, 236, 0.88)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-        transition:
-          "background-color 300ms var(--ease-out-quart), backdrop-filter 300ms var(--ease-out-quart)",
       }}
     >
-      <Link
-        href="/"
-        className="text-sm"
-        style={{ color: "var(--text-primary)", fontFamily: "var(--font-sans)" }}
-      >
-        Cee
-      </Link>
+      <div className="flex items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <Link
+          href="/"
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontWeight: 700,
+            fontSize: "17px",
+            color: "var(--text-primary)",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Cee
+        </Link>
 
-      <div className="flex items-center gap-7">
-        <a
-          href="#"
-          className="text-sm nav-link"
-          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
-        >
-          Home
-        </a>
-        <a
-          href="#work"
-          className="text-sm nav-link"
-          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
-        >
-          Work
-        </a>
+        {/* Availability badge */}
+        <div className="flex items-center gap-2">
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              fontSize: "11px",
+              fontWeight: 500,
+              color: "var(--text-secondary)",
+              backgroundColor: "var(--surface-2)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius-btn)",
+              padding: "5px 12px",
+              fontFamily: "var(--font-sans)",
+              letterSpacing: "0.01em",
+            }}
+          >
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                backgroundColor: "#22C55E",
+                display: "inline-block",
+                flexShrink: 0,
+              }}
+            />
+            Available for work
+          </span>
+        </div>
       </div>
-
-      <a
-        href="#contact"
-        className="text-sm px-4 py-1.5 rounded-full"
-        style={{
-          color: "var(--text-primary)",
-          border: "1px solid var(--text-primary)",
-          fontFamily: "var(--font-sans)",
-          transition: "opacity 200ms var(--ease-out-quart)",
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.5")}
-        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-      >
-        Contact ↗
-      </a>
     </nav>
   );
 }

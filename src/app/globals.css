@@ -1,25 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #F4F1EC;
-  --text-primary: #2A2826;
-  --text-secondary: #7A7570;
-  --text-muted: #B0A99F;
-  --border: #E0D9D1;
+  /* ── Palette ── */
+  --bg: #F2F3F5;
+  --surface: #FFFFFF;
+  --surface-2: #F9FAFB;
+  --text-primary: #0F0F0F;
+  --text-secondary: #9CA3AF;
+  --border: #E5E7EB;
+  --border-dashed: #D1D5DB;
+  --accent: #2D7FF9;
+  --accent-bg: rgba(45, 127, 249, 0.08);
+
+  /* ── Shadows ── */
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-inner: 0 1px 8px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  --shadow-glow: 0 0 40px rgba(45, 127, 249, 0.25);
+  --shadow-page: -4px 0 32px rgba(0, 0, 0, 0.04), 4px 0 32px rgba(0, 0, 0, 0.04);
+
+  /* ── Radii ── */
+  --radius-page: 28px;
+  --radius-card: 20px;
+  --radius-icon: 12px;
+  --radius-btn: 999px;
+
+  /* ── Easing ── */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     background-color: var(--bg);
-    background-image:
-      radial-gradient(ellipse 70% 55% at 85% 0%, rgba(255, 195, 140, 0.30) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 40% at 100% 20%, rgba(255, 160, 90, 0.14) 0%, transparent 55%);
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -27,69 +41,58 @@
   }
 
   ::selection {
-    background: var(--text-primary);
-    color: var(--bg);
+    background: var(--accent);
+    color: #fff;
   }
 
-  img {
-    display: block;
-    max-width: 100%;
-  }
+  img { display: block; max-width: 100%; }
 }
 
 /* ── Keyframes ── */
-
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Animation utilities ── */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
 
+/* ── Utilities ── */
 .animate-fade-up {
-  animation: fade-up 0.6s var(--ease-out-quart) both;
+  animation: fade-up 0.5s var(--ease-out-quart) both;
+}
+.animate-scale-in {
+  animation: scale-in 0.4s var(--ease-out-expo) both;
 }
 
-/* Project card hover lift */
+/* Project card hover */
 .project-card {
-  transition: transform 220ms var(--ease-out-quart);
+  transition: transform 200ms var(--ease-out-quart),
+              box-shadow 200ms var(--ease-out-quart);
 }
 .project-card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Nav link hover underline slide */
-.nav-link {
-  position: relative;
-}
+/* Nav link underline */
+.nav-link { position: relative; }
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
   background: currentColor;
-  transition: width 220ms var(--ease-out-quart);
+  transition: width 200ms var(--ease-out-quart);
 }
-.nav-link:hover::after {
-  width: 100%;
-}
+.nav-link:hover::after { width: 100%; }
 
 /* ── Reduced motion ── */
-
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

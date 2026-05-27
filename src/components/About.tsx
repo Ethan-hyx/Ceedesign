@@ -23,58 +23,93 @@ const experience = [
 
 export default function About() {
   return (
-    <section id="about" className="px-6 md:px-10 pb-24 max-w-2xl">
+    <section id="about" className="px-6 pb-12">
       <AnimateIn>
         <p
-          className="text-xs mb-6 tracking-wide"
-          style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+          style={{
+            fontSize: "11px",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            color: "var(--text-secondary)",
+            fontFamily: "var(--font-sans)",
+            textTransform: "uppercase",
+            marginBottom: "20px",
+          }}
         >
           Experience
         </p>
       </AnimateIn>
 
-      <div className="space-y-1">
-        {experience.map((item, i) => (
-          <AnimateIn key={i} delay={i * 70}>
+      {/* Single outer card containing all entries */}
+      <AnimateIn delay={40}>
+        <div
+          style={{
+            backgroundColor: "var(--surface)",
+            borderRadius: "var(--radius-card)",
+            border: "1px solid var(--border)",
+            overflow: "hidden",
+            boxShadow: "var(--shadow-inner)",
+          }}
+        >
+          {experience.map((item, i) => (
             <div
-              className="py-4"
-              style={{ borderTop: "1px solid var(--border)" }}
+              key={i}
+              className="px-5 py-4"
+              style={{
+                borderBottom:
+                  i < experience.length - 1 ? "1px solid var(--border)" : "none",
+              }}
             >
-              <div className="flex items-baseline justify-between gap-4 mb-1">
+              <div className="flex items-start justify-between gap-4 mb-1">
                 <p
-                  className="text-sm"
                   style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
                     color: "var(--text-primary)",
                     fontFamily: "var(--font-sans)",
-                    fontWeight: 500,
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {item.role}
                 </p>
                 <span
-                  className="text-xs shrink-0"
-                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+                  style={{
+                    flexShrink: 0,
+                    fontSize: "11px",
+                    color: "var(--text-secondary)",
+                    fontFamily: "var(--font-sans)",
+                    paddingTop: "2px",
+                  }}
                 >
                   {item.period}
                 </span>
               </div>
               <p
-                className="text-xs mb-1"
-                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-sans)" }}
+                style={{
+                  fontSize: "12px",
+                  color: "var(--text-secondary)",
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 500,
+                  marginBottom: "4px",
+                }}
               >
                 {item.company}
               </p>
               <p
-                className="text-xs leading-relaxed"
-                style={{ color: "var(--text-secondary)", fontFamily: "var(--font-mono)" }}
+                style={{
+                  fontSize: "12px",
+                  color: "var(--text-secondary)",
+                  fontFamily: "var(--font-sans)",
+                  lineHeight: 1.6,
+                  opacity: 0.85,
+                }}
               >
                 {item.description}
               </p>
             </div>
-          </AnimateIn>
-        ))}
-        <div style={{ borderTop: "1px solid var(--border)" }} />
-      </div>
+          ))}
+        </div>
+      </AnimateIn>
     </section>
   );
 }
